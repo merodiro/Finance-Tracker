@@ -15,9 +15,9 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-var hide_spinner = function() {
-  $('#spinner').hide();
+var hideSpinner = function() {
+  $("#spinner").hide();
 };
-var show_spinner = function() {
-  $('#spinner').show();
+var showSpinner = function() {
+  $("#spinner").show();
 };
