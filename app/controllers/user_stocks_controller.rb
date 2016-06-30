@@ -1,4 +1,3 @@
-Active code page: 1252
 class UserStocksController < ApplicationController
   before_action :set_user_stock, only: [:show, :edit, :update, :destroy]
 
