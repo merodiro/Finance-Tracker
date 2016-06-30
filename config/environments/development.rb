@@ -5,7 +5,11 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
+  if defined? BetterErrors
+    trusted_ip = ENV['SSH_CLIENT'].split(' ').first
+    puts "=> better_errors is open for #{trusted_ip}"
+    BetterErrors::Middleware.allow_ip! trusted_ip
+  end
   # Do not eager load code on boot.
   config.eager_load = false
 

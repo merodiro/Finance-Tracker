@@ -25,15 +25,15 @@ class UserStocksController < ApplicationController
   # POST /user_stocks.json
   def create
     if params[:stock_id].present?
-      @user_stock = UserStock.new(stock_id:[:stock_id],user: current_user)
+      @user_stock = UserStock.new(stock_id: [:stock_id], user: current_user)
     else
       stock = Stock.find_by_ticker(params[:stock_ticker])
       if stock
-        @user_stock = UserStock.new(user:current_user,stock:stock)
+        @user_stock = UserStock.new(user: current_user, stock: stock)
       else
-        stock=Stock.new_from_lookup(params[:stock_ticker])
+        stock = Stock.new_from_lookup(params[:stock_ticker])
         if stock.save
-          @user_stock = UserStock.new(user:current_user,stock:stock)
+          @user_stock = UserStock.new(user: current_user, stock: stock)
         else
           @user_stock = nil
           flash[:error] = "Stock isn't available"
@@ -76,13 +76,14 @@ class UserStocksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_stock
-      @user_stock = UserStock.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_stock_params
-      params.require(:user_stock).permit(:user_id, :stock_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_stock
+    @user_stock = UserStock.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_stock_params
+    params.require(:user_stock).permit(:user_id, :stock_id)
+  end
 end
