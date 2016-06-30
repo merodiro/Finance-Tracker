@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'my_portfolio', to: 'user#my_portfolio'
   get 'search_stocks', to: 'stocks#search'
+  get 'my_friends', to: 'user#my_friends'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

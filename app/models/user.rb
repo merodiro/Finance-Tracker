@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
-
+  has_many :Friendships
+  has_many :friends, through: :friendship
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)
     'Anonymous'
